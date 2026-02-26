@@ -1,0 +1,125 @@
+/* Custom fonts + global typography */
+
+@font-face {
+  font-family: "ZainMobLong100";
+  src: url("./svg/zain\\ mob-long100\\ Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --font-title: "ZainMobLong100";
+}
+
+/* Utility class (use with Tailwind classes) */
+.font-title {
+  font-family: var(--font-title), "Amiri", serif;
+}
+
+/* Override: About page section title should use Amiri only */
+.about-page h2.font-title {
+  font-family: "Amiri";
+}
+
+/* Main titles */
+h1,
+h2 {
+  font-family: var(--font-title), "Amiri", serif;
+}
+
+/* Scroll reveal (on-enter) animation */
+.scroll-reveal {
+  --sr-delay: 0ms;
+  opacity: 0;
+  transform: translate3d(0, 30px, 0);
+  transition:
+    opacity 600ms cubic-bezier(0.4, 0, 0.2, 1) var(--sr-delay),
+    transform 600ms cubic-bezier(0.4, 0, 0.2, 1) var(--sr-delay);
+  will-change: opacity, transform;
+}
+
+.scroll-reveal.is-visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+/* Card-specific scroll reveal: slight scale + fade + translate */
+.scroll-reveal-card {
+  --sr-delay: 0ms;
+  opacity: 0;
+  transform: translate3d(0, 28px, 0) scale(0.97);
+  transition:
+    opacity 0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94) var(--sr-delay),
+    transform 0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94) var(--sr-delay);
+  will-change: opacity, transform;
+}
+
+.scroll-reveal-card.is-visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-reveal {
+    opacity: 1;
+    transform: none;
+    filter: none;
+    transition: none;
+  }
+  .scroll-reveal-card {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* GovernoratePage bottom controls: keep only one custom chevron (hide native select arrow) */
+#gov-controls select,
+#gov-controls-slot select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: none !important;
+}
+
+#gov-controls select::-ms-expand,
+#gov-controls-slot select::-ms-expand {
+  display: none;
+}
+
+/* NarratorsPage bottom controls: keep only one custom chevron (hide native select arrow) */
+#narrators-controls select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: none !important;
+}
+
+#narrators-controls select::-ms-expand {
+  display: none;
+}
+
+/* Hide the GovernoratePage "moved" top row buttons (per browser DOM edits). */
+#root
+  > div.flex.flex-col.min-h-screen.bg-seera-beige
+  > div.flex.flex-col.min-h-screen.w-full.max-w-\[1920px\].mx-auto.relative.border-x.border-gray-200
+  > div.h-full.w-full.flex.items-stretch.gap-\[20px\].px-\[1px\] {
+  display: none;
+}
+
+/* Texture Overlay - Last Layer */
+.texture-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9999;
+  pointer-events: none;
+  background-image: url(/asset-14-texture.svg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.37;
+}

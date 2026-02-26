@@ -1,0 +1,8 @@
+{
+  "name": "Copy of Seera - Jordanian Identity Archive",
+  "description": "A digital platform for documenting collective memory and the history of Jordan through stories of people and places.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}

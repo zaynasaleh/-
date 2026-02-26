@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html class="light" dir="rtl" lang="ar">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+    <title>سيرة | أرشيف الهوية الأردنية</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@300;400;600;700;800&family=Public+Sans:wght@300;400;600&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+    <script type="text/javascript" src="https://www.bing.com/api/maps/mapcontrol" async defer></script>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#A1332A", /* Heritage Red */
+                        "background-light": "#ffffff",
+                        "background-dark": "#121212", /* Deep Charcoal */
+                        "surface-dark": "#1A1A1A", /* Secondary Dark */
+                        "surface": "#f9f9f9",
+                        "ink-dark": "#0f0a09",
+                        "story-dark": "#1a100f",
+                        "glass-dark": "rgba(32, 20, 18, 0.6)",
+                        "sand": "#F5F1E9",
+                        "charcoal": "#4A4A4A",
+                        "seera-grey": "#E0E0E0", /* Light Grey for text */
+                        "seera-border": "#333333", /* Dark Grey Border */
+                        "seera-beige": "#CFC2B2",
+                    },
+                    fontFamily: {
+                        "display": ["Public Sans", "sans-serif"],
+                        "serif": ["Amiri", "serif"],
+                        "sans": ["Cairo", "sans-serif"],
+                    },
+                    animation: {
+                        'slide-down': 'slideDown 0.3s ease-out forwards',
+                        'fade-in-up': 'fadeInUp 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards',
+                        'fade-in': 'fadeIn 0.8s ease-out forwards',
+                        'scroll-down': 'scrollDown 1s cubic-bezier(0.22, 1, 0.36, 1) infinite',
+                        'pattern-float': 'patternFloat 4s ease-in-out infinite',
+                        'overlay-loop': 'overlayLoop 5s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        slideDown: {
+                            '0%': { opacity: '0', transform: 'translateY(-10px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        scrollDown: {
+                            '0%': { opacity: '0.35', transform: 'translateY(0px)' },
+                            '35%': { opacity: '1' },
+                            '70%': { opacity: '0.35', transform: 'translateY(12px)' },
+                            '100%': { opacity: '0.35', transform: 'translateY(0px)' },
+                        },
+                        patternFloat: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-8px)' },
+                        },
+                        overlayLoop: {
+                            '0%, 100%': { opacity: '0.28' },
+                            '50%': { opacity: '0.4' },
+                        },
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            font-family: "Cairo", sans-serif;
+        }
+
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        /* Industrial Archive Global Reset */
+        * {
+            border-radius: 0 !important;
+        }
+
+        .archive-border {
+            border: 1px solid #e5e7eb;
+            /* gray-200 */
+        }
+
+        .archive-border-b {
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        /* Unified Heritage Tone Filter */
+        .heritage-filter {
+            filter: sepia(10%) saturate(95%) contrast(105%);
+            transition: filter 0.5s ease;
+        }
+
+        .group:hover .heritage-filter {
+            filter: sepia(0%) saturate(100%) contrast(100%);
+        }
+
+        .glass-effect {
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+        }
+
+        .text-justified {
+            text-align: justify;
+            text-justify: inter-word;
+        }
+
+        .grain {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 50;
+            opacity: 0.04;
+            background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuAn-lLJ2UeG-4IoUbd7R1bqgWuDvqAeZMn6JUzvnCCLRakFyaC224ylF4e1lHN5rdCDtnRcxsc4vHKw0Uvc468z_cgMjKFNHVWxn5eDb89ZOBTDMAP-R1eKXEKeUwGMWXzaKU4E7Eyw14ExRtlbeqXD0xbyOXyPA5Ld9y8xmO_v_2KK2jesNJ5rbAZHden6t2IfWGVfdT-d1WXRR1yaVlUmmnttJCmWzUGehymaMLg424HywTNAHNtXb72vJBt819gquR0wUih5Ci0);
+        }
+
+        /* Google Maps Customization */
+        .gm-style {
+            font-family: "Cairo", sans-serif;
+        }
+    </style>
+    <script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@^19.2.3",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "react/": "https://esm.sh/react@^19.2.3/"
+  }
+}
+</script>
+    <link rel="stylesheet" href="/index.css">
+</head>
+
+<body class="bg-seera-beige text-gray-900 antialiased min-h-screen">
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+</body>
+
+</html>
